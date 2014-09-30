@@ -33,5 +33,17 @@ describe "STW-Pract2-Heroku" do
 		end
 
 	end
+
+	describe "salida" do
+		it "lista correcta" do
+			get '/'
+				client = my_twitter_client() 
+				ultimos_t = client.friends(@name, {}).take(@number)
+				lista = ultimos_t.map{ |i| [i.name ,i.followers_count]}
+				lista = lista.take(@number)
+				lista.length.must_equal @number
+		end
+	end
+			
 	
 end
