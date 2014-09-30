@@ -10,13 +10,12 @@ Sistemas y Tecnologías Web.
 Autor
 -----------
 
-Mª Belén Armas Torres y María Rojas Estévez
+Mª Belén Armas Torres
 
 Objetivo
 -----------
 
-Accedemos a Twitter en una aplicación Sinatra que muestre en una página los usuarios más relevantes de la lista de personas que seguimos y realizamos su despliegue en Heroku
-
+Accedemos a Twitter en una aplicación Sinatra que muestre en una página los usuarios más relevantes de la lista de personas que seguimos.
 
 Instalación
 --------------
