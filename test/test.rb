@@ -2,7 +2,8 @@ ENV['RACK_ENV'] = 'test'
 
 require'minitest/autorun'
 require 'rack/test'
-require_relative '../twitter.rb'
+require './twitter.rb'
+require './configure.rb'
 
 include Rack::Test::Methods
 
@@ -12,38 +13,42 @@ end
 
 describe "Pruebas twitter" do
 
-	before :each do
-		@name = mery_reds
-		@number = 5
+	before :all do
+		@amigos_usuario = CuantosAmigos.new
+		@client = my_twitter_client()
+		@name = "mery_reds"
+		@name2 = "troloroooooooo"
 	end
 
-	describe "entrada" do
-
-		it "campo nombre" do
-			@name.must_equal "mery_reds"
-		end
-
-		it "campo numero" do
-			@number.must_equal 5
-		end
-
-	end
-
-	it "lista correcta" do
+	it "cargar index en el servidor" do
 		get '/'
-			client = my_twitter_client() 
-			ultimos_t = client.friends(@name, {}).take(@number)
-			lista = ultimos_t.map{ |i| [i.name ,i.followers_count]}
-			lista = lista.take(@number)
-			lista.length.must_equal @number
+		assert last_response.ok?
+	end
+
+	it "titulo de la pagina igual a Amigos de usuario" do
+		get '/'
+		assert last_response.body.include?("<title> Amigos de usuario</title>"), "El titulo debe ser Amigos de usuario"
+	end
+
+	it "el usuario existe" do
+		assert @amigos_usuario.test_usuario(@client, @name)
+	end
+
+	it "hay un formulario donde preguntar?" do
+		get '/'
+		assert last_response.body.include?("Introduzca su nombre en Twitter:"), "El body debe contener nombre de usuario"
+		assert last_response.body.include?("¿Cuántos amigos desea ver?"), "El body debe contener el numero de amigos"
+	end
+
+	it "el usuario no debe existir"
+		refute @amigos_usuario.test_usuario(@client, @name2)
+	end
+
+	it "numero de amigos coincide" do
+		assert_equal 133 #Sustituir por numero de amigos cuenta
+	end
+
+	it "numero de amigos erroneos" do
+		refute_equal 5, @amigos_usuario.test_amigos(@client, @name)
 	end	
-	
-end
-
-describe "Pruebas web" do
-
-	it "la pagina carga correctamente" do
-		get '/'
-		assert last_reponse.ok?
-	end
 end
