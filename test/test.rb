@@ -6,11 +6,11 @@ require_relative '../twitter.rb'
 
 include Rack::Test::Methods
 
-	def app
-		Sinatra::Applliccation
-	end
+def app
+	Sinatra::Applliccation
+end
 
-describe "STW-Pract2-Heroku" do
+describe "Pruebas twitter" do
 
 	before :each do
 		@name = mery_reds
@@ -40,11 +40,10 @@ describe "STW-Pract2-Heroku" do
 	
 end
 
-describe "Pruebas web"
+describe "Pruebas web" do
 
 	it "la pagina carga correctamente" do
 		get '/'
 		assert last_reponse.ok?
 	end
-
 end
