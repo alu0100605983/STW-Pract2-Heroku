@@ -1,9 +1,20 @@
+task(:default) do
+	require 'test/test.rb'
+end
+
+
+desc "ejecutar los tests"
+task :test => :default
+
+
+desc "Intalacion de gema"
+task :bundle do
+	sh "bundle install"
+end
+
+
 desc "Arrancar la aplicacion"
-task :default do
+task :server do
   sh "ruby twitter.rb"
 end
 
-desc "Ejecucion de tests"
-task :test do
-	sh "test/test.rb"	
-end
