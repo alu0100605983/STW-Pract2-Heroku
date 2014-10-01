@@ -12,11 +12,6 @@ include Rack::Test::Methods
 
 describe "STW-Pract2-Heroku" do
 
-	it "la pagina carga correctamente" do
-		get '/'
-		assert last_reponse.ok?
-	end
-
 	before :each do
 		@name = mery_reds
 		@number = 5
@@ -34,16 +29,22 @@ describe "STW-Pract2-Heroku" do
 
 	end
 
-	describe "salida" do
-		it "lista correcta" do
-			get '/'
-				client = my_twitter_client() 
-				ultimos_t = client.friends(@name, {}).take(@number)
-				lista = ultimos_t.map{ |i| [i.name ,i.followers_count]}
-				lista = lista.take(@number)
-				lista.length.must_equal @number
-		end
-	end
-			
+	it "lista correcta" do
+		get '/'
+			client = my_twitter_client() 
+			ultimos_t = client.friends(@name, {}).take(@number)
+			lista = ultimos_t.map{ |i| [i.name ,i.followers_count]}
+			lista = lista.take(@number)
+			lista.length.must_equal @number
+	end	
 	
+end
+
+describe "Pruebas web"
+
+	it "la pagina carga correctamente" do
+		get '/'
+		assert last_reponse.ok?
+	end
+
 end
