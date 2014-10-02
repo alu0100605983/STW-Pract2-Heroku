@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require'minitest/autorun'
+require 'minitest/autorun'
 require 'rack/test'
 require './twitter.rb'
 require './configure.rb'
@@ -13,7 +13,7 @@ end
 
 describe "Pruebas twitter" do
 
-	before :all do
+	before :each do
 		@amigos_usuario = CuantosAmigos.new
 		@client = my_twitter_client()
 		@name = "mery_reds"
@@ -40,7 +40,7 @@ describe "Pruebas twitter" do
 		assert last_response.body.include?("¿Cuántos amigos desea ver?"), "El body debe contener el numero de amigos"
 	end
 
-	it "el usuario no debe existir"
+	it "el usuario no debe existir" do
 		refute @amigos_usuario.test_usuario(@client, @name2)
 	end
 
