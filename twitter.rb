@@ -2,6 +2,18 @@ require 'twitter'
 require 'sinatra'
 require './configure'
 
+class CuantosAmigos #Para los unit tests de la api
+
+	def test_usuario(cliente, nombre)
+		cliente.user? nombre
+	end
+
+	def test_amigos(cliente, nombre)
+		cliente.user(nombre).friends_count
+	end
+
+end
+
 get '/' do
   @amigos_usuario = []
   @name = ''
