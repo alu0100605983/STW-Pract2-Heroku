@@ -5,13 +5,13 @@ end
 desc "ejecutar los tests"
 task :test => :default
 
-desc "Intalacion de gema"
-task :bundle do
-	sh "bundle install"
-end
-
 desc "Arrancar la aplicacion"
 task :server do
   sh "ruby twitter.rb"
+end
+
+desc "Intalacion de gema"
+task :bexec do
+	sh "bundle exec rackup -p 4567"
 end
 

@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require'minitest/autorun'
+require 'minitest/autorun'
 require 'rack/test'
 require './twitter.rb'
 require './configure.rb'
@@ -8,12 +8,12 @@ require './configure.rb'
 include Rack::Test::Methods
 
 def app
-	Sinatra::Applliccation
+	Sinatra::Application
 end
 
 describe "Pruebas twitter" do
 
-	before :all do
+	before :each do
 		@amigos_usuario = CuantosAmigos.new
 		@client = my_twitter_client()
 		@name = "mery_reds"
@@ -25,9 +25,9 @@ describe "Pruebas twitter" do
 		assert last_response.ok?
 	end
 
-	it "titulo de la pagina igual a Amigos de usuario" do
+	it "titulo de la pagina igual a Amigos de un usuario" do
 		get '/'
-		assert last_response.body.include?("<title> Amigos de usuario</title>"), "El titulo debe ser Amigos de usuario"
+		assert last_response.body.include?("<title>Amigos de un usuario</title>"), "El titulo debe ser Amigos de un usuario"
 	end
 
 	it "el usuario existe" do
@@ -40,12 +40,12 @@ describe "Pruebas twitter" do
 		assert last_response.body.include?("¿Cuántos amigos desea ver?"), "El body debe contener el numero de amigos"
 	end
 
-	it "el usuario no debe existir"
+	it "el usuario no debe existir" do
 		refute @amigos_usuario.test_usuario(@client, @name2)
 	end
 
 	it "numero de amigos coincide" do
-		assert_equal 133 #Sustituir por numero de amigos cuenta
+		assert_equal 133, @amigos_usuario.test_amigos(@client, @name) #Sustituir por numero de amigos cuenta
 	end
 
 	it "numero de amigos erroneos" do
