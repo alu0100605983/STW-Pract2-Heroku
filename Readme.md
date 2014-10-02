@@ -10,12 +10,13 @@ Sistemas y Tecnologías Web.
 Autor
 -----------
 
-Mª Belén Armas Torres y María Rojas Estévez
+- Mª Belén Armas Torres 
+- María Rojas Estévez
 
 Objetivo
 -----------
 
-Accedemos a Twitter en una aplicación Sinatra que muestre en una página los usuarios más relevantes de la lista de personas que seguimos y realizamos su despliegue en Heroku
+Realizamos el despliegue en Heroku y creamos los tests unitarios para la aplicación que muestra los usuarios más relevantes de la lista de personas que sigue un usuario
 
 
 Instalación
@@ -30,6 +31,7 @@ Ejecución
 
 Podemos ejecutarlo así:
 
-1. `ruby twitter.rb`
-2. Iremos a [http://localhost:4567/](http://localhost:4567/) para poder usar la aplicación
+1. Para arranccar los tests unitarios: `rake`
+2. Para lanzar la aplicación: `rake server`
+3. Iremos a [http://localhost:4567/](http://localhost:4567/) para poder usar la aplicación
 
