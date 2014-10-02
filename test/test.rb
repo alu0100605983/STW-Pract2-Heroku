@@ -8,7 +8,11 @@ require './configure.rb'
 include Rack::Test::Methods
 
 def app
+<<<<<<< HEAD
 	Sinatra::Application
+=======
+	Sinatra::Appliccation
+>>>>>>> Maria
 end
 
 describe "Pruebas twitter" do
