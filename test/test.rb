@@ -25,9 +25,9 @@ describe "Pruebas twitter" do
 		assert last_response.ok?
 	end
 
-	it "titulo de la pagina igual a Amigos de usuario" do
+	it "titulo de la pagina igual a Amigos de un usuario" do
 		get '/'
-		assert last_response.body.include?("<title> Amigos de usuario</title>"), "El titulo debe ser Amigos de usuario"
+		assert last_response.body.include?("<title>Amigos de un usuario</title>"), "El titulo debe ser Amigos de un usuario"
 	end
 
 	it "el usuario existe" do
@@ -45,7 +45,7 @@ describe "Pruebas twitter" do
 	end
 
 	it "numero de amigos coincide" do
-		assert_equal 133 #Sustituir por numero de amigos cuenta
+		assert_equal 133, @amigos_usuario.test_amigos(@client, @name) #Sustituir por numero de amigos cuenta
 	end
 
 	it "numero de amigos erroneos" do
