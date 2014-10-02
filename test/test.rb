@@ -8,7 +8,7 @@ require './configure.rb'
 include Rack::Test::Methods
 
 def app
-	Sinatra::Applliccation
+	Sinatra::Application
 end
 
 describe "Pruebas twitter" do
