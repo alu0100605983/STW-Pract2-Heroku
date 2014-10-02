@@ -8,7 +8,7 @@ require './configure.rb'
 include Rack::Test::Methods
 
 def app
-	Sinatra::Appliccation
+	Sinatra::Application
 end
 
 describe "Pruebas twitter" do
@@ -40,7 +40,7 @@ describe "Pruebas twitter" do
 		assert last_response.body.include?("¿Cuántos amigos desea ver?"), "El body debe contener el numero de amigos"
 	end
 
-	it "el usuario no debe existir"
+	it "el usuario no debe existir" do
 		refute @amigos_usuario.test_usuario(@client, @name2)
 	end
 
@@ -50,5 +50,7 @@ describe "Pruebas twitter" do
 
 	it "numero de amigos erroneos" do
 		refute_equal 5, @amigos_usuario.test_amigos(@client, @name)
-	end	
+	end
+		
 end
+
