@@ -19,6 +19,15 @@ Objetivo
 Realizamos el despliegue en Heroku y creamos los tests unitarios para la aplicación que muestra los usuarios más relevantes de la lista de personas que sigue un usuario
 
 
+Enlaces
+------------
+
+1. [Github:](https://github.com/alu0100605983/STW-Pract2-Heroku)
+2. [Github pages:](https://alu0100605983.github.io/STW-Pract2-Heroku)
+3. [Travis:](https://travis-ci.org/alu0100605983/STW-Pract2-Heroku)
+4. [Heroku:](http://sheltered-plateau-8184.herokuapp.com/)
+
+
 Instalación
 --------------
 
